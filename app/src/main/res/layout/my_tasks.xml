@@ -25,16 +25,14 @@
         app:barrierDirection="left" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/my_tasks_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="120dp"
+        android:layout_marginEnd="124dp"
         android:text="@string/my_tasks"
         android:textSize="34sp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.06"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
@@ -49,17 +47,49 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/setingsButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
-        android:layout_marginEnd="52dp"
-        android:layout_marginBottom="308dp"
-        android:contentDescription="@string/placeholder"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="20dp"
+        android:background="#1B1919"
+        android:contentDescription="@string/settings"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_preferences" />
+
+    <Button
+        android:id="@+id/button_main_activity_task_one"
+        android:layout_width="196dp"
+        android:layout_height="48dp"
+        android:text="@string/buttonOne"
+        app:layout_constraintBottom_toTopOf="@+id/button_main_activity_task_two"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/placeholder" />
+        app:layout_constraintTop_toBottomOf="@+id/my_tasks_title"
+        app:layout_constraintVertical_chainStyle="spread" />
+
+    <Button
+        android:id="@+id/button_main_activity_task_two"
+        android:layout_width="196dp"
+        android:layout_height="48dp"
+        android:text="@string/buttonTwo"
+        app:layout_constraintBottom_toTopOf="@+id/button_main_activity_task_three"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_main_activity_task_one" />
+
+    <Button
+        android:id="@+id/button_main_activity_task_three"
+        android:layout_width="196dp"
+        android:layout_height="48dp"
+        android:text="@string/buttonThree"
+        app:layout_constraintBottom_toTopOf="@+id/allTasksToAllTasks"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_main_activity_task_two" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
