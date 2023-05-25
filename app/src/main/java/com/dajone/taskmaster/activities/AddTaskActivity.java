@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.dajone.taskmaster.R;
 
-import org.w3c.dom.Text;
+
 
 public class AddTaskActivity extends AppCompatActivity {
 
@@ -42,7 +42,7 @@ public class AddTaskActivity extends AppCompatActivity {
                     }
                 }, 2000); // 2000 milliseconds = 2 seconds
 
-                Intent intent = new Intent(AddTaskActivity.this, AddTaskToAllTasks.class);
+                Intent intent = new Intent(AddTaskActivity.this, AllTasksActivity.class);
                 startActivity(intent);
 
             }

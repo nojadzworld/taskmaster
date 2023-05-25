@@ -3,7 +3,7 @@
     <string name="hint">Name</string>
     <string name="main_activity_input_title">Title</string>
     <string name="main_activity_submit_button">Submit</string>
-    <string name="submitted_confirmation"></string>
+    <string name="submitted_confirmation">submitted!</string>
     <string name="add_task">ADD TASK</string>
     <string name="all_tasks">ALL TASKS</string>
     <string name="my_tasks">My Tasks</string>
@@ -16,4 +16,20 @@
     <string name="add_task_to_all">ADD TASK</string>
     <string name="task_title_of_add_task">task title</string>
     <string name="all_tasks_page">All Tasks</string>
+    <string name="settings">settingsButtonForSettings</string>
+    <string name="name">Name</string>
+    <string name="username">Username</string>
+    <string name="task_settings">Settings</string>
+    <string name="title">Title</string>
+    <string name="lorem_ipsum_dolor_sit_amet_consectetur_adipiscing_elit_sed_do_eiusmod_tempor_incididunt_ut_labore_et_dolore_magna_aliqua_arcu_non_odio_euismod_lacinia_eget_mauris_pharetra_et_ultrices_sit_amet_mauris_commodo_quis_imperdiet_massa_tincidunt">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Arcu non odio euismod lacinia. Eget mauris pharetra et ultrices. Sit amet mauris commodo quis imperdiet massa tincidunt.</string>
+    <string name="submitted">submitted!</string>
+    <string name="enterUsername">Enter Username</string>
+    <string name="saveButton" />
+    <string name="saveSettingsButton">SAVE</string>
+    <string name="buttonOne">Class 28 Reading</string>
+    <string name="buttonTwo">Lab 28\n</string>
+    <string name="buttonThree">CODE CHALLENGE 28\n</string>
+    <string name="task_description_of_add_task">Description</string>
+    <string name="task_detail_text_view" />
+    <string name="task_status" />
 </resources>

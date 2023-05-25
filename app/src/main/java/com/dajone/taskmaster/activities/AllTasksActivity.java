@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.dajone.taskmaster.R;
 
-public class AddTaskToAllTasks extends AppCompatActivity {
+public class AllTasksActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
