@@ -27,4 +27,17 @@
 
 * Updated the task details activity to include task status and description for the specific task.
 
+
 ![home page](./screenshots/lab%2028%20.png)
+
+### 25 May 2023
+
+* Added SQLite database with Android Room
+* Tasks are now saved to the database
+* A toast appears notifying the user that the inputted task was saved
+* Add task updated with a spinner 
+
+![HOME](./screenshots/LAB%2029.png)
+=======
+![home page](./screenshots/lab%2028%20.png)
+

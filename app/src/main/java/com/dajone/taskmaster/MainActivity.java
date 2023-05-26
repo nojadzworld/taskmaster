@@ -3,6 +3,7 @@ package com.dajone.taskmaster;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.room.Room;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -14,9 +15,9 @@ import android.widget.TextView;
 
 import com.dajone.taskmaster.activities.AddTaskActivity;
 import com.dajone.taskmaster.activities.AllTasksActivity;
-import com.dajone.taskmaster.activities.TaskDetail;
 import com.dajone.taskmaster.activities.TaskSettings;
 import com.dajone.taskmaster.adapters.TaskListRecyclerViewAdapter;
+import com.dajone.taskmaster.database.TaskmasterDatabase;
 import com.dajone.taskmaster.models.Task;
 
 import java.util.ArrayList;
@@ -27,6 +28,11 @@ public class MainActivity extends AppCompatActivity {
     public static final String TASK_NAME_EXTRAS_TAG = "taskName";
     public static final String TASK_STATUS_EXTRAS_TAG = "taskStatus";
     public static final String TASK_DESCRIPTION_EXTRAS_TAG = "taskDescription";
+    public static final String DATABASE_NAME = "dajone-taskmaster";
+    List<Task> tasks = new ArrayList<>();
+    TaskListRecyclerViewAdapter taskListRecyclerViewAdapter;
+    TaskmasterDatabase taskmasterDatabase;
+
     SharedPreferences preferences;
 
 
@@ -35,14 +41,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.my_tasks);
 
-        List<Task> taskList = new ArrayList<>();
-        taskList.add(new Task("Lab: 28 - RecyclerView", "Its a lab that adds a RecyclerView", Task.TaskStatus.IN_PROGRESS));
-        taskList.add(new Task("Class 28 Reading", "Reading topic for the day", Task.TaskStatus.ASSIGNED));
-        taskList.add(new Task("Code Challenge 28", "Quick Sort", Task.TaskStatus.COMPLETE));
 
-
+        setupTasksFromDatabase();
         setUpSettingsButton();
-        setUpRecyclerView(taskList);
+        setUpRecyclerView();
         setupAddTaskButton();
         setupAllTasksButton();
 
@@ -58,6 +60,20 @@ public class MainActivity extends AppCompatActivity {
             String myTasksTitleTextView = username + "'s Tasks";
             ((TextView) findViewById(R.id.my_tasks_title)).setText(myTasksTitleTextView);
         }
+
+        setupTasksFromDatabase();
+        taskListRecyclerViewAdapter.updateTasksData(tasks);
+    }
+
+    public void setupTasksFromDatabase() {
+        taskmasterDatabase = Room.databaseBuilder(
+                        getApplicationContext(),
+                        TaskmasterDatabase.class,
+                        DATABASE_NAME)
+                .allowMainThreadQueries()
+                .build();
+        tasks = taskmasterDatabase.taskDao().findAll();
+
     }
         public void setUpSettingsButton() {
             ImageView settingsImageView = findViewById(R.id.settingsButton);
@@ -67,46 +83,25 @@ public class MainActivity extends AppCompatActivity {
             });
         }
 
-        public void setUpRecyclerView(List<Task> tasks) {
-            RecyclerView taskListRecyclerView = (RecyclerView) findViewById(R.id.mainActivityTaskListRecyclerView);
+        public void setUpRecyclerView() {
+            RecyclerView taskListRecyclerView = findViewById(R.id.mainActivityTaskListRecyclerView);
 
             RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
             taskListRecyclerView.setLayoutManager(layoutManager);
 
-            TaskListRecyclerViewAdapter adapter = new TaskListRecyclerViewAdapter(tasks, this);
-            taskListRecyclerView.setAdapter(adapter);
+            taskListRecyclerViewAdapter = new TaskListRecyclerViewAdapter(tasks, this);
+            taskListRecyclerView.setAdapter(taskListRecyclerViewAdapter);
         }
-
-//    public void setupTaskButtons() {
-//        Button taskOneButton = findViewById(R.id.button_main_activity_task_one);
-//        setupTaskButton(taskOneButton);
-//        Button taskTwoButton = findViewById(R.id.button_main_activity_task_two);
-//        setupTaskButton(taskTwoButton);
-//        Button taskThreeButton = findViewById(R.id.button_main_activity_task_three);
-//        setupTaskButton(taskThreeButton);
-//
-//    }
-
-    public void setupTaskButton(Button goToTaskButton) {
-        goToTaskButton.setOnClickListener(v -> {
-            Intent goToTaskIntent = new Intent(MainActivity.this, TaskDetail.class);
-            String taskName = goToTaskButton.getText().toString();
-            goToTaskIntent.putExtra(TASK_NAME_EXTRAS_TAG, taskName);
-
-            startActivity(goToTaskIntent);
-        });
-    }
-
 
        public void setupAddTaskButton() {
            Button setupAddTaskButton = findViewById(R.id.addTaskRouteButton);
-
-        setupAddTaskButton.setOnClickListener(v -> {
+         
+            setupAddTaskButton.setOnClickListener(v -> {
                 Intent intent = new Intent(MainActivity.this, AddTaskActivity.class);
         startActivity(intent);
-        });
-}
+               });
 
+    }
     public void setupAllTasksButton() {
         Button allTaskButtonOnAddTaskPage = findViewById(R.id.allTasksToAllTasks);
 

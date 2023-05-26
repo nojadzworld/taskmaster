@@ -1,19 +1,20 @@
 package com.dajone.taskmaster.models;
 
+
+
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity
 public class Task {
 
-     String title;
-     String body;
+    @PrimaryKey(autoGenerate = true)
+     public long id;
+     private String title;
+     private String body;
 
-     TaskStatus status;
-
-     public enum TaskStatus {
-         NEW,
-         ASSIGNED,
-         IN_PROGRESS,
-         COMPLETE
-     }
-
+    private TaskStatus status;
+  
     public Task(String title, String body, TaskStatus status) {
         this.title = title;
         this.body = body;

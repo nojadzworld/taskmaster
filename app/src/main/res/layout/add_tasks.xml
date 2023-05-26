@@ -17,7 +17,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.251"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText2"
+        app:layout_constraintTop_toBottomOf="@+id/addTaskDescriptionEditText"
         app:layout_constraintVertical_bias="0.742" />
 
 
@@ -28,7 +28,7 @@
         android:layout_marginTop="84dp"
         android:text="@string/add_task_to_all_tasks"
         android:textSize="34sp"
-        app:layout_constraintBottom_toTopOf="@+id/editTextText"
+        app:layout_constraintBottom_toTopOf="@+id/addTaskTitleEditText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.277"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,7 +36,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <EditText
-        android:id="@+id/editTextText"
+        android:id="@+id/addTaskTitleEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -50,7 +50,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <EditText
-        android:id="@+id/editTextText2"
+        android:id="@+id/addTaskDescriptionEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -58,7 +58,7 @@
         android:autofillHints=""
         android:ems="10"
         android:inputType="text"
-        android:labelFor="@id/editTextText"
+        android:labelFor="@id/addTaskTitleEditText"
         android:minHeight="48dp"
         android:text="@string/task_description_of_add_task"
         app:layout_constraintStart_toStartOf="@+id/textView"
@@ -97,5 +97,18 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Spinner
+        android:id="@+id/spinner_add_task_status"
+        android:layout_width="222dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="64dp"
+        android:contentDescription="@string/task_status"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/addTaskDescriptionEditText"
+        app:layout_constraintTop_toBottomOf="@+id/addTaskDescriptionEditText"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
