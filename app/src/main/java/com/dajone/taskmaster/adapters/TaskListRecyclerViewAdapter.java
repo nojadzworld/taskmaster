@@ -64,10 +64,12 @@ public class TaskListRecyclerViewAdapter extends RecyclerView.Adapter<TaskListRe
         });
     }
 
+
     public void updateTasksData(List<Task> updatedTasks) {
         tasks = updatedTasks;
         notifyDataSetChanged();
     }
+
 
     @Override
     public int getItemCount() {

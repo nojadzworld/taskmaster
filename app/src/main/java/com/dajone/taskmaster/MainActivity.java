@@ -28,11 +28,11 @@ public class MainActivity extends AppCompatActivity {
     public static final String TASK_NAME_EXTRAS_TAG = "taskName";
     public static final String TASK_STATUS_EXTRAS_TAG = "taskStatus";
     public static final String TASK_DESCRIPTION_EXTRAS_TAG = "taskDescription";
-
     public static final String DATABASE_NAME = "dajone-taskmaster";
     List<Task> tasks = new ArrayList<>();
     TaskListRecyclerViewAdapter taskListRecyclerViewAdapter;
     TaskmasterDatabase taskmasterDatabase;
+
     SharedPreferences preferences;
 
 
@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.my_tasks);
+
 
         setupTasksFromDatabase();
         setUpSettingsButton();
@@ -94,13 +95,13 @@ public class MainActivity extends AppCompatActivity {
 
        public void setupAddTaskButton() {
            Button setupAddTaskButton = findViewById(R.id.addTaskRouteButton);
-
-        setupAddTaskButton.setOnClickListener(v -> {
+         
+            setupAddTaskButton.setOnClickListener(v -> {
                 Intent intent = new Intent(MainActivity.this, AddTaskActivity.class);
         startActivity(intent);
-        });
-}
+               });
 
+    }
     public void setupAllTasksButton() {
         Button allTaskButtonOnAddTaskPage = findViewById(R.id.allTasksToAllTasks);
 

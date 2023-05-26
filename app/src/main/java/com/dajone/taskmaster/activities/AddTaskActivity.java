@@ -22,6 +22,7 @@ import com.dajone.taskmaster.models.Task;
 import com.dajone.taskmaster.models.TaskStatus;
 
 
+
 public class AddTaskActivity extends AppCompatActivity {
     TaskmasterDatabase taskmasterDatabase;
 
@@ -56,11 +57,14 @@ public class AddTaskActivity extends AppCompatActivity {
             EditText tittleEditText = findViewById(R.id.addTaskTitleEditText);
             EditText descriptionEditText = findViewById(R.id.addTaskDescriptionEditText);
 
+
             Task newTask = new Task(
                  tittleEditText.getText().toString(),
                  descriptionEditText.getText().toString(),
                  TaskStatus.fromString(taskStatusSpinner.getSelectedItem().toString())
             );
+
+    
 
               taskmasterDatabase.taskDao().insertTask(newTask);
             ((EditText)findViewById(R.id.addTaskTitleEditText)).setText("");

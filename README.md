@@ -27,6 +27,7 @@
 
 * Updated the task details activity to include task status and description for the specific task.
 
+
 ![home page](./screenshots/lab%2028%20.png)
 
 ### 25 May 2023
@@ -37,3 +38,6 @@
 * Add task updated with a spinner 
 
 ![HOME](./screenshots/LAB%2029.png)
+=======
+![home page](./screenshots/lab%2028%20.png)
+
