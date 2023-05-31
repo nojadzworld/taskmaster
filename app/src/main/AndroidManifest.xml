@@ -17,7 +17,15 @@
             android:exported="false" />
 
         <activity
-            android:name=".activities.AddTaskToAllTasks"
+            android:name=".activities.AllTasksActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".activities.TaskDetail"
+            android:exported="false" />
+
+        <activity
+            android:name=".activities.TaskSettings"
             android:exported="false" />
 
         <activity

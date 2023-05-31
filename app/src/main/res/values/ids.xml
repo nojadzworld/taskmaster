@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="settingsButton" type="id" />
+    <item name="addTaskToAllTasks" type="id" />
+    <item name="addTaskRouteButton" type="id">add task</item>
+    <item name="settingsButton" type="id" />
+</resources>
