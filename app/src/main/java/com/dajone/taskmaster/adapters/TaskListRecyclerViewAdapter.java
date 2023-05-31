@@ -70,7 +70,6 @@ public class TaskListRecyclerViewAdapter extends RecyclerView.Adapter<TaskListRe
         notifyDataSetChanged();
     }
 
-
     @Override
     public int getItemCount() {
         return tasks.size();

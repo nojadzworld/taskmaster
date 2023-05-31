@@ -14,7 +14,7 @@ public class Task {
      private String body;
 
     private TaskStatus status;
-  
+
     public Task(String title, String body, TaskStatus status) {
         this.title = title;
         this.body = body;
