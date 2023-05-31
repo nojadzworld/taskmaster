@@ -1,6 +1,7 @@
 package com.dajone.taskmaster.models;
 
 
+
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
@@ -14,7 +15,6 @@ public class Task {
 
     private TaskStatus status;
 
-    
     public Task(String title, String body, TaskStatus status) {
         this.title = title;
         this.body = body;

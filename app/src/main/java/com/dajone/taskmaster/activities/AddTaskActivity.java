@@ -56,6 +56,7 @@ public class AddTaskActivity extends AppCompatActivity {
             EditText tittleEditText = findViewById(R.id.addTaskTitleEditText);
             EditText descriptionEditText = findViewById(R.id.addTaskDescriptionEditText);
 
+
             Task newTask = new Task(
                  tittleEditText.getText().toString(),
                  descriptionEditText.getText().toString(),

@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     List<Task> tasks = new ArrayList<>();
     TaskListRecyclerViewAdapter taskListRecyclerViewAdapter;
     TaskmasterDatabase taskmasterDatabase;
+
     SharedPreferences preferences;
 
 
@@ -40,6 +41,23 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.my_tasks);
+
+
+        setupTasksFromDatabase();
+        setUpSettingsButton();
+        setUpRecyclerView();
+        setupAddTaskButton();
+        setupAllTasksButton();
+
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String username = preferences.getString(TaskSettings.USERNAME_TAG, "");
+
+
 
         setupTasksFromDatabase();
         setUpSettingsButton();
@@ -95,6 +113,7 @@ public class MainActivity extends AppCompatActivity {
        public void setupAddTaskButton() {
            Button setupAddTaskButton = findViewById(R.id.addTaskRouteButton);
 
+
         setupAddTaskButton.setOnClickListener(v -> {
                 Intent intent = new Intent(MainActivity.this, AddTaskActivity.class);
         startActivity(intent);
@@ -103,6 +122,17 @@ public class MainActivity extends AppCompatActivity {
 
     public void setupAllTasksButton() {
         Button allTaskButtonOnAddTaskPage = findViewById(R.id.allTaskToAllTasks);
+
+         
+            setupAddTaskButton.setOnClickListener(v -> {
+                Intent intent = new Intent(MainActivity.this, AddTaskActivity.class);
+        startActivity(intent);
+               });
+
+    }
+    public void setupAllTasksButton() {
+        Button allTaskButtonOnAddTaskPage = findViewById(R.id.allTasksToAllTasks);
+
 
         allTaskButtonOnAddTaskPage.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, AllTasksActivity.class);
