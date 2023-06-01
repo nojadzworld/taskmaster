@@ -3,21 +3,23 @@ package com.dajone.taskmaster;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.room.Room;
+
 
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.amplifyframework.api.graphql.model.ModelQuery;
+import com.amplifyframework.core.Amplify;
 import com.dajone.taskmaster.activities.AddTaskActivity;
 import com.dajone.taskmaster.activities.AllTasksActivity;
 import com.dajone.taskmaster.activities.TaskSettings;
 import com.dajone.taskmaster.adapters.TaskListRecyclerViewAdapter;
-import com.dajone.taskmaster.database.TaskmasterDatabase;
 import com.dajone.taskmaster.models.Task;
 
 import java.util.ArrayList;
@@ -25,15 +27,13 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static final String TAG = "main_activity_tag";
     public static final String TASK_NAME_EXTRAS_TAG = "taskName";
     public static final String TASK_STATUS_EXTRAS_TAG = "taskStatus";
     public static final String TASK_DESCRIPTION_EXTRAS_TAG = "taskDescription";
 
-    public static final String DATABASE_NAME = "dajone-taskmaster";
     List<Task> tasks = new ArrayList<>();
     TaskListRecyclerViewAdapter taskListRecyclerViewAdapter;
-    TaskmasterDatabase taskmasterDatabase;
-
     SharedPreferences preferences;
 
 
@@ -50,22 +50,7 @@ public class MainActivity extends AppCompatActivity {
         setupAllTasksButton();
 
     }
-    @Override
-    protected void onResume() {
-        super.onResume();
 
-        preferences = PreferenceManager.getDefaultSharedPreferences(this);
-        String username = preferences.getString(TaskSettings.USERNAME_TAG, "");
-
-
-
-        setupTasksFromDatabase();
-        setUpSettingsButton();
-        setUpRecyclerView();
-        setupAddTaskButton();
-        setupAllTasksButton();
-
-    }
     @Override
     protected void onResume() {
         super.onResume();
@@ -83,13 +68,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void setupTasksFromDatabase() {
-        taskmasterDatabase = Room.databaseBuilder(
-                        getApplicationContext(),
-                        TaskmasterDatabase.class,
-                        DATABASE_NAME)
-                .allowMainThreadQueries()
-                .build();
-        tasks = taskmasterDatabase.taskDao().findAll();
+
+        tasks.clear();
+        Amplify.API.query(
+                ModelQuery.list(Task.class),
+                Task.class,
+                success -> {
+                    Log.i(TAG, "Read products successfully");
+                    for (Task task : success.getData())
+                        tasks.add(task);
+                    runOnUiThread(() -> taskListRecyclerViewAdapter.notifyDataSetChanged());
+                },
+                failure -> Log.i(TAG, "Failed to read products")
+        );
 
     }
         public void setUpSettingsButton() {
@@ -119,17 +110,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
         });
 }
-
-    public void setupAllTasksButton() {
-        Button allTaskButtonOnAddTaskPage = findViewById(R.id.allTaskToAllTasks);
-
-         
-            setupAddTaskButton.setOnClickListener(v -> {
-                Intent intent = new Intent(MainActivity.this, AddTaskActivity.class);
-        startActivity(intent);
-               });
-
-    }
     public void setupAllTasksButton() {
         Button allTaskButtonOnAddTaskPage = findViewById(R.id.allTasksToAllTasks);
 
