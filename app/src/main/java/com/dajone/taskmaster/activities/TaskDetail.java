@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.dajone.taskmaster.MainActivity;
 import com.dajone.taskmaster.R;
+import com.dajone.taskmaster.models.TaskStatus;
 
 public class TaskDetail extends AppCompatActivity {
 
@@ -21,6 +22,7 @@ public class TaskDetail extends AppCompatActivity {
         String taskNameString = null;
         String taskDescriptionString = null;
         String taskStatusString = null;
+        TaskStatus status = null;
 
         if (callingIntent != null) {
             taskNameString = callingIntent.getStringExtra(MainActivity.TASK_NAME_EXTRAS_TAG);
