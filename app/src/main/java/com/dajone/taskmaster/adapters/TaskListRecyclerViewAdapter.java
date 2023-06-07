@@ -21,7 +21,7 @@ import com.dajone.taskmaster.models.Task;
 
 import java.util.List;
 
-public class TaskListRecyclerViewAdapter extends RecyclerView.Adapter<TaskListRecyclerViewAdapter.TaskListViewHolder> {
+public class TaskListRecyclerViewAdapter<T> extends RecyclerView.Adapter<TaskListRecyclerViewAdapter.TaskListViewHolder> {
 
     private List<Task> tasks;
     Context callingActivity;
@@ -42,7 +42,7 @@ public class TaskListRecyclerViewAdapter extends RecyclerView.Adapter<TaskListRe
     @Override
     public void onBindViewHolder(@NonNull TaskListViewHolder holder, @SuppressLint("RecyclerView") int position) {
         Button taskFragmentButton = (Button) holder.itemView.findViewById(R.id.button_task_list_fragment_task_list_item);
-        Task task = tasks.get(position);
+        Task task = (Task) tasks.get(position);
         String taskName = task.getTitle();
         taskFragmentButton.setText(taskName);
 
@@ -67,7 +67,8 @@ public class TaskListRecyclerViewAdapter extends RecyclerView.Adapter<TaskListRe
 
 
     public void updateTasksData(List<Task> updatedTasks) {
-        tasks = updatedTasks;
+        tasks.clear();
+        tasks.addAll(updatedTasks);
         notifyDataSetChanged();
     }
 

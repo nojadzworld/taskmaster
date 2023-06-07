@@ -11,5 +11,23 @@
       "StackId": "arn:aws:cloudformation:us-west-2:426459891544:stack/amplify-taskmaster-dev-171239/05dc6d00-0011-11ee-871a-067610a092d5",
       "AmplifyAppId": "d11k922foe59qv"
     }
+  },
+  "taskmaster": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-taskmaster-taskmaster-160034-authRole",
+      "UnauthRoleArn": "arn:aws:iam::426459891544:role/amplify-taskmaster-taskmaster-160034-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::426459891544:role/amplify-taskmaster-taskmaster-160034-authRole",
+      "Region": "us-west-2",
+      "DeploymentBucketName": "amplify-taskmaster-taskmaster-160034-deployment",
+      "UnauthRoleName": "amplify-taskmaster-taskmaster-160034-unauthRole",
+      "StackName": "amplify-taskmaster-taskmaster-160034",
+      "StackId": "arn:aws:cloudformation:us-west-2:426459891544:stack/amplify-taskmaster-taskmaster-160034/9d97c370-032b-11ee-9252-0a44f31a9d17",
+      "AmplifyAppId": "d11k922foe59qv"
+    },
+    "categories": {
+      "api": {
+        "taskmaster": {}
+      }
+    }
   }
 }

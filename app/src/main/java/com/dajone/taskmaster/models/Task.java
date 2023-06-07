@@ -5,11 +5,10 @@ package com.dajone.taskmaster.models;
 
 
 
+
 public class Task {
-     public long id;
      private String title;
      private String body;
-
     private TaskStatus status;
 
     public Task(String title, String body, TaskStatus status) {
