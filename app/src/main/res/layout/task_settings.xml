@@ -5,6 +5,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <Spinner
+        android:id="@+id/spinner_settings_team"
+        android:layout_width="222dp"
+        android:layout_height="48dp"
+        android:contentDescription="@string/team"
+        app:layout_constraintStart_toStartOf="@+id/usernameEditText"
+        app:layout_constraintTop_toBottomOf="@+id/settings_team_textView" />
+
+    <TextView
+        android:id="@+id/settings_team_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/team_title"
+        app:layout_constraintStart_toStartOf="@+id/usernameEditText"
+        app:layout_constraintTop_toBottomOf="@+id/usernameEditText" />
+
     <LinearLayout
         android:id="@+id/settings_layout"
         android:layout_width="match_parent"

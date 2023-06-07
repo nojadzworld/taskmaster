@@ -3,6 +3,7 @@ package com.dajone.taskmaster;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import com.amplifyframework.datastore.generated.model.Task;
 
 
 import android.content.Intent;
@@ -20,7 +21,7 @@ import com.dajone.taskmaster.activities.AddTaskActivity;
 import com.dajone.taskmaster.activities.AllTasksActivity;
 import com.dajone.taskmaster.activities.TaskSettings;
 import com.dajone.taskmaster.adapters.TaskListRecyclerViewAdapter;
-import com.dajone.taskmaster.models.Task;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -68,15 +69,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void setupTasksFromDatabase() {
+        preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String currentTeam = preferences.getString(TaskSettings.TEAM_TAG, "All");
 
         tasks.clear();
         Amplify.API.query(
-                ModelQuery.list(Task.class),
-                Task.class,
+                ModelQuery.list(com.amplifyframework.datastore.generated.model.Task.class),
                 success -> {
                     Log.i(TAG, "Read products successfully");
-                    for (Task task : success.getData())
-                        tasks.add(task);
+                    for (Task task : success.getData()) {
+                        if (currentTeam.equals("All") || task.getTeam().getName().equals(currentTeam)) {
+                         tasks.add(task);
+                        }
+                    }
                     runOnUiThread(() -> taskListRecyclerViewAdapter.notifyDataSetChanged());
                 },
                 failure -> Log.i(TAG, "Failed to read products")
@@ -97,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
             RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
             taskListRecyclerView.setLayoutManager(layoutManager);
 
-            taskListRecyclerViewAdapter = new TaskListRecyclerViewAdapter(tasks, this);
+            taskListRecyclerViewAdapter = new TaskListRecyclerViewAdapter(new ArrayList<>(), this);
             taskListRecyclerView.setAdapter(taskListRecyclerViewAdapter);
         }
 
@@ -111,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
         });
 }
     public void setupAllTasksButton() {
-        Button allTaskButtonOnAddTaskPage = findViewById(R.id.allTasksToAllTasks);
+        Button allTaskButtonOnAddTaskPage = findViewById(R.id.allTaskToAllTasks);
 
 
         allTaskButtonOnAddTaskPage.setOnClickListener(v -> {

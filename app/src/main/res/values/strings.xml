@@ -32,4 +32,7 @@
     <string name="task_description_of_add_task">Description</string>
     <string name="task_detail_text_view" />
     <string name="task_status" />
+    <string name="team_title" />
+    <string name="team" />
+    <string name="task_status_title" />
 </resources>

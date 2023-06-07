@@ -111,4 +111,30 @@
         app:layout_constraintTop_toBottomOf="@+id/addTaskDescriptionEditText"
         />
 
+    <Spinner
+        android:id="@+id/spinner_add_task_team"
+        android:layout_width="222dp"
+        android:layout_height="48dp"
+        android:contentDescription="@string/team"
+        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/add_task_team_textView" />
+
+    <TextView
+        android:id="@+id/add_task_team_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/team_title"
+        app:layout_constraintStart_toStartOf="@+id/spinner_add_task_team"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <TextView
+        android:id="@+id/add_task_status_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/task_status_title"
+        app:layout_constraintStart_toStartOf="@+id/addTaskDescriptionEditText"
+        app:layout_constraintTop_toBottomOf="@+id/addTaskDescriptionEditText" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
