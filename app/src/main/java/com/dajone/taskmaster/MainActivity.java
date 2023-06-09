@@ -3,6 +3,8 @@ package com.dajone.taskmaster;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+
 import com.amplifyframework.datastore.generated.model.Task;
 
 
@@ -32,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
     public static final String TASK_NAME_EXTRAS_TAG = "taskName";
     public static final String TASK_STATUS_EXTRAS_TAG = "taskStatus";
     public static final String TASK_DESCRIPTION_EXTRAS_TAG = "taskDescription";
+
+    public static final String TASK_ATTACHMENT_EXTRA_TAG = "taskAttachment";
 
     List<Task> tasks = new ArrayList<>();
     TaskListRecyclerViewAdapter taskListRecyclerViewAdapter;
@@ -66,6 +70,8 @@ public class MainActivity extends AppCompatActivity {
 
         setupTasksFromDatabase();
         taskListRecyclerViewAdapter.updateTasksData(tasks);
+
+
     }
 
     public void setupTasksFromDatabase() {

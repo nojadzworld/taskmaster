@@ -35,4 +35,16 @@
     <string name="team_title" />
     <string name="team" />
     <string name="task_status_title" />
+    <string name="login_page" />
+    <string name="email_hint" />
+    <string name="password" />
+    <string name="login" />
+    <string name="sign_up" />
+    <string name="sign_up_page" />
+    <string name="verify_account_title" />
+    <string name="verify" />
+    <string name="verification_number" />
+    <string name="task_image" />
+    <string name="logout" />
+    <string name="add_image" />
 </resources>

@@ -15,6 +15,15 @@
         android:theme="@style/Theme.TaskMaster"
         tools:targetApi="31">
         <activity
+            android:name=".activities.authentication.VerifyAccountActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.authentication.SignupActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.authentication.LoginActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.AddTaskActivity"
             android:exported="false" />
 

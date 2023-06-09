@@ -1,6 +1,6 @@
 package com.dajone.taskmaster.utils;
 
-import com.dajone.taskmaster.models.TaskStatus;
+import com.amplifyframework.datastore.generated.model.TaskStatus;
 
 import java.util.ArrayList;
 
