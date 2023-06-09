@@ -68,4 +68,24 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/usernameEditText" />
 
+
+    <Button
+        android:id="@+id/userProfileActivityLoginButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/login"
+        android:textColor="#263238"
+        app:layout_constraintStart_toStartOf="@+id/button_settings_activity_save"
+        app:layout_constraintTop_toBottomOf="@+id/button_settings_activity_save" />
+
+    <Button
+        android:id="@+id/userProfileActivityLogoutButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/logout"
+        android:textColor="#263238"
+        app:layout_constraintEnd_toEndOf="@+id/spinner_settings_team"
+        app:layout_constraintTop_toTopOf="@+id/userProfileActivityLoginButton" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
